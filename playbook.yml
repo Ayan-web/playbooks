@@ -1,5 +1,5 @@
 - name: "getting ready"
-  host: localhost
+  hosts: localhost
   connection: local
 
   tasks:
