@@ -5,13 +5,18 @@
   tasks:
   - name: Install latest version of openjdk-8-jdk ignoring install-recommends
     apt:
-      name: openjdk-8-jdk
+      name: 
+      - openjdk-8-jdk
+      - openjdk-8-jre
       state: latest
-  - name: Install Latest version of openjdk-8-jdk ignoring install-recommends
-    apt:
-      name: openjdk-8-jre
-      state: latest
-  - name: installing nvm
-    command: wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash 
-  - name: installing node version 10
-    command: nvm install 10 
+    become: true
+    
+  - name: Install nvm
+    shell: >
+      curl https://raw.githubusercontent.com/creationix/nvm/v0.7.0/install.sh | sh
+      creates=/home/{{ ansible_user_id }}/.nvm/nvm.sh
+
+  - name: Install node and set version
+    shell: >
+      /bin/bash -c "source ~/.nvm/nvm.sh && nvm install 0.10 && nvm alias default 0.10"
+      creates=/home/{{ ansible_user_id }}/.nvm/alias
