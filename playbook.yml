@@ -1,19 +1,19 @@
-- name: "getting ready"
+- name: getting ready
   hosts: localhost
   connection: local
 
   tasks:
-- name: Install latest version of "openjdk-8-jdk" ignoring "install-recommends"
+- name: Install latest version of openjdk-8-jdk ignoring install-recommends
   apt:
     name: openjdk-8-jdk
     state: latest
     install_recommends: no
-- name: Install Latest version of "openjdk-8-jdk" ignoring "install-recommends"
+- name: Install Latest version of openjdk-8-jdk ignoring install-recommends
   apt:
     name: openjdk-8-jre
     state: latest
     install_recommends: no
-- name: "installing nvm"
+- name: installing nvm
   command: wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash 
-- name: "installing node version 10"
+- name: installing node version 10
   command: nvm install 10 
