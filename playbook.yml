@@ -1,4 +1,7 @@
-host: localhost
+- name: "getting ready"
+  host: localhost
+  connection: local
+
 tasks:
 - name: Install latest version of "openjdk-8-jdk" ignoring "install-recommends"
   apt:
